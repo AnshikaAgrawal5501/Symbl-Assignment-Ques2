@@ -2,13 +2,9 @@ const jsonServer = require('json-server');
 const server = jsonServer.create();
 const jsonData = require('./db.json');
 
-const data = jsonData.data.map((item) => {
-    return item;
-}).sort((a, b) => {
+jsonData.data = jsonData.data.sort((a, b) => {
     return a.id - b.id;
-});
-
-jsonData.data = data;
+});;
 
 const router = jsonServer.router(jsonData);
 
